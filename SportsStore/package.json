@@ -10,6 +10,7 @@
     "gulp-uglify": "3.0.0",
     "gulp-concat": "2.6.1",
     "gulp-bower-files": "0.2.7",
-    "copyfiles": "2.0.0"
+    "copyfiles": "2.0.0",
+    "font-awesome": "4.7.0"
   }
 }

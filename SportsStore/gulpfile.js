@@ -29,32 +29,10 @@ var deps = {
     "bootstrap": {
         "dist/**/*": ""
     },
-    "cookieconsent": {
-        "build/*": ""
-    },
-    "highlightjs": {
-        "*.js": "",
-        "styles/*": "styles"
-    },
-    "lodash": {
-        "lodash*.*": ""
-    },
-    "respond.js": {
-        "dest/*": ""
-    },
     "tether": {
         "dist/**/*": ""
     },
-    "vue": {
-        "dist/*": ""
-    },
-    "vee-validate": {
-        "dist/*": ""
-    },
-    "vue-resource": {
-        "dist/*": ""
-    },
-    "@fortawesome/fontawesome-free-webfonts": {
+    "font-awesome": {
         "**/*": ""
     }
 };
