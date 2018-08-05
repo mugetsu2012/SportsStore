@@ -18,9 +18,25 @@ namespace SportsStore.Controllers
             _cart = cart;
         }
 
+        public ViewResult List() => View(_orderRepository.Orders.Where(x => x.Shipped == false));
+
         public IActionResult Checkout()
         {
             return View(new Order());
+        }
+
+        [HttpPost]
+        public IActionResult MarkShipped(int orderId)
+        {
+            Order order = _orderRepository.Orders.FirstOrDefault(x => x.OrderId == orderId);
+
+            if (order != null)
+            {
+                order.Shipped = true;
+                _orderRepository.SaveOrder(order);
+            }
+
+            return RedirectToAction(nameof(List));
         }
 
         [HttpPost]
