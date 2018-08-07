@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SportsStore.Models;
 
@@ -9,8 +10,8 @@ namespace SportsStore.Controllers
 {
     public class OrderController:Controller
     {
-        private IOrderRepository _orderRepository;
-        private Cart _cart;
+        private readonly IOrderRepository _orderRepository;
+        private readonly Cart _cart;
 
         public OrderController(IOrderRepository orderRepository, Cart cart)
         {
@@ -18,6 +19,7 @@ namespace SportsStore.Controllers
             _cart = cart;
         }
 
+        [Authorize]
         public ViewResult List() => View(_orderRepository.Orders.Where(x => x.Shipped == false));
 
         public IActionResult Checkout()
@@ -26,6 +28,7 @@ namespace SportsStore.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult MarkShipped(int orderId)
         {
             Order order = _orderRepository.Orders.FirstOrDefault(x => x.OrderId == orderId);
